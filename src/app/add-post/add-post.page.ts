@@ -20,42 +20,42 @@ export class AddPostPage implements OnInit {
     private navCtrl:NavController,
     private firestore: AngularFirestore
   ) { }
-  //ELMER JIMENEZ ARMAS 
+
   ngOnInit() {}
 
   async createPost(post:Post){
-    if (this.formValidation()) {
-      let loader= await this.loadingCtrl.create({
+    if(this.formValidation()) {
+      let loader = await this.loadingCtrl.create({
         message: "Espere un momento por favor..."
       })
       await loader.present();
 
-      try{
-        await this.firestore.collection("posts").add(post);
-      } catch (e:any){
-        e.message = "Mensaje de error en el post";
-        let errorMessage = e.message || e.getLocalizedMessage();
+      try {
+        await this.firestore.collection("post").add(post);
+      }catch (e:any){
+        e.message = "Mensaje de error en el post"
+        let errormessage = e.message || e.getLocalizedMesaage();
 
-        this.showToast(errorMessage)
+        this.showToast(errormessage);
       }
 
-      await loader.dismiss()
+      await loader.dismiss();
       this.navCtrl.navigateRoot("home");
     }
   }
 
   formValidation(){
-    if (!this.post.title) {
-      this.showToast("Ingrese un titulo");
+    if(!this.post.title){
+      this.showToast("Ingrese un título");
       return false;
     }
-    if (!this.post.details) {
-      this.showToast("Ingrese una descripcion");
+    if(!this.post.details){
+      this.showToast("Ingrese una descripción");
       return false;
     }
     return true;
   }
-
+  
   showToast(message:string){
     this.toastCtrl.create({
       message: message,

@@ -28,7 +28,7 @@ export class HomePage {
     await loader.present();
 
     try{
-      this.firestore.collection('posts').snapshotChanges().subscribe((data:any[])=>{
+      this.firestore.collection('post').snapshotChanges().subscribe((data:any[])=>{
         this.posts=data.map((e:any)=>{
           return{
             id: e.payload.doc.id,
@@ -51,7 +51,7 @@ export class HomePage {
     })
     await loader.present();
 
-    await this.firestore.doc("posts/"+id).delete();
+    await this.firestore.doc("post/"+id).delete();
 
     await loader.dismiss();
   }

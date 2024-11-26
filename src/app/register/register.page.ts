@@ -21,27 +21,23 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() { }
 
-  async register(user:User){
-    if (this.formValidation()) {
-      let loader= await this.loadingCtrl.create({
-        message: "Espere un momento por favor..."
+  async register(user: User){
+    if(this.formValidation()) {
+      let loader = await this.loadingCtrl.create({
+        message: "Espere por favor..."
       })
       await loader.present();
-
-      try{
-        await this.afAuth.createUserWithEmailAndPassword(user.email,user.password).then(data=>{
+      try {
+        await this.afAuth.createUserWithEmailAndPassword(user.email, user.password).then(data =>{
           console.log(data);
-
           this.navCtrl.navigateRoot("home")
         })
-      } catch (e:any){
-        e.message = "error al registrarse";
-        let errorMessage = e.message || e.getLocalizedMessage();
-
-        this.showToast(errorMessage)
+      }catch (e: any) {
+        const errorMessage = e.message || e.getLocalizedMessage() || "Error al registrarse";
+        this.showToast(errorMessage); 
       }
 
-      await loader.dismiss()
+      await loader.dismiss();
     }
   }
 
@@ -54,7 +50,7 @@ export class RegisterPage implements OnInit {
       this.showToast("Ingrese una clave");
       return false;
     }
-    return false;
+    return true;
   }
 
   showToast(message:string){

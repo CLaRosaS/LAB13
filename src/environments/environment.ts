@@ -4,14 +4,14 @@
 
 export const environment = {
   production: false,
-  FIREBASE_CONFIG: {
-    apiKey: 'AIzaSyAAbpTutQH__YK3kx__kbblEbNDMoy4rwc',
-    authDomain: 'app-crud-9257f.firebaseapp.com',
-    projectId: 'app-crud-9257f',
-    storageBucket: 'app-crud-9257f.firebasestorage.app',
-    messagingSenderId: '211104701263',
-    appId: '1:211104701263:web:9689ad3e20dea9a680c33a',
-    measurementId: 'G-REM9YK2PQJ',
+  FIREBASECONFIG: {
+    apiKey: "AIzaSyCOP0d8ezXxqnA4-NA4lucMzhsmuMstQQM",
+  authDomain: "lab12-f84ff.firebaseapp.com",
+  projectId: "lab12-f84ff",
+  storageBucket: "lab12-f84ff.firebasestorage.app",
+  messagingSenderId: "234137772809",
+  appId: "1:234137772809:web:8396d6ad8640bffa5829d8",
+  measurementId: "G-8VQ788P64C"
   },
 };
 
